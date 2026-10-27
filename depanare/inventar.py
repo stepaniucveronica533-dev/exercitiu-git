@@ -49,11 +49,11 @@ def main():
     a = p.parse_args()
 
     tinte = incarca(a.fisier)
-    print("Tinte citite: " + len(tinte))
+    print("Tinte citite:",+ len(tinte))
 
     grupe = pe_servicii(tinte)
     for serviciu, porturi in grupe.items():
-        print(f"{serviciu}: {porturi}")
+        print(f"{servicii}: {porturi}")
 
     mari = peste_prag(tinte, a.prag)
     print(f"Peste {a.prag}: {mari}")
