@@ -37,20 +37,20 @@ def peste_prag(tinte, prag):
     """Lista gazdelor cu un port mai mare decat pragul."""
     rezultat = []
     for t in tinte:
-        port = int(t["port"])
-        if port > prag:
+        port = port_valid(t.get("port"))
+        if port is not None and port > int(prag):
             rezultat.append(t["gazda"])
-        return rezultat
+    return rezultat
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("fisier")
-    p.add_argument("--prag", default=1024)
+    p.add_argument("--prag", default=1024, type=int)
     a = p.parse_args()
 
     tinte = incarca(a.fisier)
-    print("Tinte citite:",+ len(tinte))
+    print("Tinte citite:", len(tinte))
 
     grupe = pe_servicii(tinte)
     for serviciu, porturi in grupe.items():
@@ -61,7 +61,7 @@ def main():
     print(f"Peste {a.prag}: {mari}")
 
     with open("raport_inventar.json", "w") as f:
-        json.dump({"servicii": grupe, "peste_prag": mari}, f, indent=2)
+        json.dump{"servicii": grupe, "peste_prag": mari}, f, indent=2)
     print("Raport salvat in raport_inventar.json")
 
 
