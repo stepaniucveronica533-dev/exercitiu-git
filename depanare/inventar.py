@@ -53,8 +53,8 @@ def main():
 
     grupe = pe_servicii(tinte)
     for serviciu, porturi in grupe.items():
-        print(f"{serviciu
-        }: {porturi}")
+        print(f"{serviciu}: {porturi}")
+
 
     mari = peste_prag(tinte, a.prag)
     print(f"Peste {a.prag}: {mari}")
